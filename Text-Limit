@@ -1,0 +1,41 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package gui.Ayarlar;
+
+import java.awt.TextField;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import javax.swing.JTextField;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.PlainDocument;
+
+/**
+ *
+ * @author R4PORT-ROOT
+ */
+public class TextFiledAyarlar{
+    private static int limit;
+    // limit ayarları
+    public static void MaksimumLimit(JTextField jTextField,int Limit)
+    {
+    limit = Limit;
+    jTextField.setDocument(new PlainDocument(){
+
+        @Override
+        public void insertString(int offs, String str, AttributeSet a) throws BadLocationException {
+           if(str==null)
+               return;
+           else if(getLength()+str.length() <=limit)
+                super.insertString(offs, str, a); 
+        }
+    
+    });
+    }
+
+}
+
+//using MaksimumLimit(Textbox,11);
